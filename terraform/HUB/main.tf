@@ -6,19 +6,19 @@ terraform {
     key                  = "azmhub.tfstate"
   }
 }
- 
+
 provider "azurerm" {
   features {}
 }
- 
+
 data "azurerm_client_config" "current" {}
- 
+
 #Create Resource Group
 resource "azurerm_resource_group" "rg-neu-networking" {
   name     = "rg-neu-networking"
   location = "northeurope"
 }
- 
+
 #Create Virtual Network
 resource "azurerm_virtual_network" "vnet-neu-hub" {
   name                = "vnet-neu-hub"
@@ -26,11 +26,11 @@ resource "azurerm_virtual_network" "vnet-neu-hub" {
   location            = azurerm_resource_group.rg-neu-networking.location
   resource_group_name = azurerm_resource_group.rg-neu-networking.name
 }
- 
+
 # Create Subnet
 resource "azurerm_subnet" "subnet" {
   name                 = "snet-neu-azfirewall"
   resource_group_name  = azurerm_resource_group.rg-neu-networking.name
   virtual_network_name = azurerm_virtual_network.vnet-neu-hub.name
-  address_prefixes       = ["172.16.0.0/24"]
+  address_prefixes     = ["172.16.0.0/24"]
 }
