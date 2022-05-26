@@ -2,7 +2,7 @@ terraform {
   backend "azurerm" {
     resource_group_name  = "neu-rg-terraformstates"
     storage_account_name = "neustterraformstates"
-    container_name       = "hub"
+    container_name       = "states"
     key                  = "azmhub.tfstate"
   }
 }
