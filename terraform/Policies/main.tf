@@ -19,13 +19,13 @@ variable "policy_definition_category" {
 }
 
 resource "azurerm_policy_definition" "ResourceGroup_Naming" {
-  name         = "ResourceGroup_Naming"  
-  policy_type  = "Custom"
-  mode         = "All"
-  display_name = "Resource Group Naming Convention"
-  description  = "This policy check if the name of the resource groups is compliant"
+  name                = "ResourceGroup_Naming"
+  policy_type         = "Custom"
+  mode                = "All"
+  display_name        = "Resource Group Naming Convention"
+  description         = "This policy check if the name of the resource groups is compliant"
   management_group_id = "b267e754-ae0a-4daa-b217-c857813bf721"
-  metadata = <<METADATA
+  metadata            = <<METADATA
     {
     "category": "${var.policy_definition_category}",
     "version" : "1.0.0"
@@ -73,7 +73,7 @@ PARAMETERS
 }
 
 output "ResourceGroup-Naming_id" {
-  value       = "${azurerm_policy_definition.ResourceGroup_Naming.id}"
+  value       = azurerm_policy_definition.ResourceGroup_Naming.id
   description = "The policy definition id for auditRoleAssignmentType_user"
 }
 
