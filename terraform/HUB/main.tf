@@ -28,9 +28,17 @@ resource "azurerm_virtual_network" "vnet-neu-hub" {
 }
 
 # Create Subnet
-resource "azurerm_subnet" "subnet" {
+resource "azurerm_subnet" "subnetfw" {
   name                 = "snet-neu-azfirewall"
   resource_group_name  = azurerm_resource_group.rg-neu-networking.name
   virtual_network_name = azurerm_virtual_network.vnet-neu-hub.name
   address_prefixes     = ["172.16.0.0/24"]
+}
+
+# Create Subnet
+resource "azurerm_subnet" "subnetAAD" {
+  name                 = "snet-neu-AAD"
+  resource_group_name  = azurerm_resource_group.rg-neu-networking.name
+  virtual_network_name = azurerm_virtual_network.vnet-neu-hub.name
+  address_prefixes     = ["172.16.1.0/24"]
 }
