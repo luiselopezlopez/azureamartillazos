@@ -19,6 +19,11 @@ resource "azurerm_resource_group" "rg-neu-networking" {
   location = "northeurope"
 }
 
+resource "azurerm_resource_group" "RG-NEU-FIREWALL" {
+  name     = "RG-NEU-FIREWALL"
+  location = "northeurope"
+}
+
 #Create Virtual Network
 resource "azurerm_virtual_network" "vnet-neu-hub" {
   name                = "vnet-neu-hub"
