@@ -11,6 +11,9 @@ provider "azurerm" {
   features {}
 }
 
+data "azurerm_management_group" "root" {
+  name="b267e754-ae0a-4daa-b217-c857813bf721"
+}
 
 variable "policy_definition_category" {
   type        = string
@@ -24,7 +27,8 @@ resource "azurerm_policy_definition" "ResourceGroup_Naming" {
   mode                = "All"
   display_name        = "Resource Group Naming Convention"
   description         = "This policy check if the name of the resource groups is compliant"
-  management_group_id = "b267e754-ae0a-4daa-b217-c857813bf721"
+  ##management_group_id = "b267e754-ae0a-4daa-b217-c857813bf721"
+  management_group_id = data.azurerm_management_group.root.id
   metadata            = <<METADATA
     {
     "category": "${var.policy_definition_category}",
