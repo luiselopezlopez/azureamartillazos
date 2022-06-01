@@ -1,9 +1,3 @@
-variable "policy_definition_category" {
-  type        = string
-  description = "Limits and boundaries policies"
-  default     = "Governance"
-}
-
 resource "azurerm_policy_definition" "ResourceGroup_Naming" {
   name                = "ResourceGroup_Naming"
   policy_type         = "Custom"

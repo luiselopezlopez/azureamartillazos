@@ -7,6 +7,8 @@ resource "azurerm_policy_set_definition" "AzureNaming" {
   policy_definition_reference {
     policy_definition_id = azurerm_policy_definition.ResourceGroup_Naming.id
   }
+
+  
   metadata            = <<METADATA
     {
     "category": "${var.policy_definition_category}",
@@ -20,3 +22,4 @@ resource "azurerm_management_group_policy_assignment" "AzureNamingInitiative" {
     policy_definition_id = azurerm_policy_set_definition.AzureNaming.id
     management_group_id = data.azurerm_management_group.root.id
 }
+
